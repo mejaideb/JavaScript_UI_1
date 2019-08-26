@@ -1,7 +1,7 @@
 const addButton=document.querySelector('.addbutton');
 var input=document.querySelector('.input');
 const container =document.querySelector('.container');
-class item{
+class Item{
  
     constructor(itemName){ 
         this.createDiv(itemName);
@@ -10,6 +10,10 @@ class item{
     createDiv(itemName){
     let input=document.createElement('input');
     input.value=itemName;
+    var option = document.createElement('option');
+    option.value=input.value;
+    document.getElementById('list').appendChild(option);
+    
     input.disabled=true;
     input.classList.add('item_input');
     input.type="text";
@@ -39,14 +43,14 @@ class item{
         input.disabled=!input.disabled;
     }
 
-    remove(item){
-        container.removeChild(item);
+    remove(Item){
+        container.removeChild(Item);
     }
 
 }
 function check(){
     if(input.value!=""){
-        new item(input.value);
+        new Item(input.value);
         input.value="";
     }
 }
